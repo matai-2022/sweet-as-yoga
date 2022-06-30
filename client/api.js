@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const url = '/api/v1/'
+const url = '/api/v1'
 
 export function fetchClasses() {
   return request.get(url + '/classes').then((res) => res.body)
