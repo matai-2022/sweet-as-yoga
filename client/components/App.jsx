@@ -9,11 +9,15 @@ import Confirmation from './Confirmation.jsx'
 function App() {
   return (
     <>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/classes">Classes</Link>
-        <Link to="/cart">Cart</Link>
-      </nav>
+      <div className="header">
+        <h1>Sweet As Yoga</h1>
+
+        <nav>
+          <Link to="/">HOME</Link>
+          <Link to="/classes">CLASSES</Link>
+          <Link to="/cart">CART</Link>
+        </nav>
+      </div>
 
       <Routes>
         <Route path="/" element={<Home />} />
