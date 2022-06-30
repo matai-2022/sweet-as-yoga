@@ -10,9 +10,29 @@ function listClasses(db = connection) {
   return db('classes').select()
 }
 
-//requests is [1,2,3]
+//requests [{id:1},{id:2}] ids here are classes ids
 function addClass(requests, db = connection) {
-  return db('orders').insert()
+  const order = requests.map((item) => {
+    return { id: item.id }
+  })
+  const timestamp = new Date(Date.now())
+  return db('orders')
+    .insert({
+      created_at: timestamp,
+    })
+    .then(([id]) => addOrderLines(id, order, db))
+}
+
+function addOrderLines(id, order, db = connection) {
+  const orderLines = order.map((item) => {
+    return {
+      orders_id: id,
+      classes_id: item.id,
+    }
+  })
+  return db('classes_orders')
+    .insert(orderLines)
+    .then(() => null)
 }
 
 function listOrders(db = connection) {

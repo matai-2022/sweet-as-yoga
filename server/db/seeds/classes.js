@@ -6,7 +6,7 @@ exports.seed = async function (knex) {
       id: 1,
       name: 'Sweaty As',
       description: 'A very sweaty yoga experience!',
-      dateTime: 'June 30th 2022, 4:30:00 pm',
+      dateTime: '30 June 2022 10:00:00 GMT',
     },
     {
       id: 2,
