@@ -11,18 +11,7 @@ router.get('/', (req, res) => {
       return null
     })
     .catch((err) => {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
-    })
-})
-
-router.get('/orders', (req, res) => {
-  db.listOrders()
-    .then((orders) => {
-      res.json(orders)
-      return null
-    })
-    .catch((err) => {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
+      res.status(500).send('BACKEND ERROR: ' + err.message)
     })
 })
 
