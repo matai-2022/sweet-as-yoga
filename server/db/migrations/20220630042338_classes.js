@@ -2,7 +2,7 @@ exports.up = function (knex) {
   return knex.schema.createTable('classes', (table) => {
     table.increments('id').primary()
     table.string('name')
-    table.string('classDescription')
+    table.string('description')
     table.string('dateTime')
   })
 }

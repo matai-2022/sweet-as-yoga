@@ -1,7 +1,7 @@
 exports.up = function (knex) {
   return knex.schema.createTable('orders', (table) => {
     table.increments('id').primary()
-    table.integer('classes_id').references('classes.id')
+    table.date('created_at')
   })
 }
 
