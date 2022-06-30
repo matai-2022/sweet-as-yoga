@@ -1,24 +1,28 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
+
+import Home from './Home.jsx'
+import Cart from './Cart.jsx'
+import Classes from './Classes.jsx'
+import Confirmation from './Confirmation.jsx'
 
 function App() {
-  // const fruits = useSelector(selectFruits)
-  // const dispatch = useDispatch()
-  // useEffect(async () => {
-  //   await dispatch(fetchFruits())
-  // }, [])
-  // return (
-  //   <>
-  //     <div className="app">
-  //       <h1>Fullstack Boilerplate - with Fruits!</h1>
-  //       <ul>
-  //         {fruits.map((fruit) => (
-  //           <li key={fruit}>{fruit}</li>
-  //         ))}
-  //       </ul>
-  //     </div>
-  //   </>
-  // )
+  return (
+    <>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/classes">Classes</Link>
+        <Link to="/cart">Cart</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/classes" element={<Classes />} />
+        <Route path="/confirmation" element={<Confirmation />} />
+      </Routes>
+    </>
+  )
 }
 
 export default App
