@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import moment from 'moment'
 
 import { fetchClasses } from '../api.js'
+
+import Class from './Class.jsx'
 
 export default function Classes() {
   const [classes, setClasses] = useState([])
@@ -29,17 +30,15 @@ export default function Classes() {
           </tr>
         </thead>
         <tbody>
-          {classes.map((item) => {
-            return (
-              <tr key={item.id}>
-                <td>{moment(item.dateTime).format('dddd D MMMM YYYY')}</td>
-                <td>{moment(item.dateTime).format('LT')}</td>
-                <td>{item.name}</td>
-                <td>{item.description}</td>
-                <td>Book</td>
-              </tr>
-            )
-          })}
+          {classes.map((item) => (
+            <Class
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              description={item.description}
+              dateTime={item.dateTime}
+            />
+          ))}
         </tbody>
       </table>
     </div>
