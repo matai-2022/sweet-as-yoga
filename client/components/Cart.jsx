@@ -1,36 +1,49 @@
 import React, { useEffect } from 'react'
-//import { Link } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
+import {postOrder} from '../api'
 import { useSelector, useDispatch } from 'react-redux'
 
+import moment from 'moment'
 import { deleteCart } from '../slices/cart'
 
 export default function Cart() {
   //const [order,setOrder] = useState([])
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const order = useSelector((state) => state.cart)
-  console.log('order', order)
+  
 
-  useEffect(async () => {}, [])
+  //useEffect(async () => {}, [])
 
   function handleDelete(e, id) {
     dispatch(deleteCart({ id: id }))
+  }
+
+  function handleSubmit(e,order){
+    e.preventDefault()
+   postOrder(order)
+   .then(navigate('/confirmation'))
+   .catch((err)=>console.error(err.message))
+
+    
   }
 
   return (
     <div className="cart">
       <table className="cart-table">
         <thead>
+          <tr>
           <th>Date</th>
           <th>Time</th>
           <th>Name</th>
           <th></th>
+          </tr>
         </thead>
         {order.map((item) => {
           return (
             <tr key={item.id}>
-              <td>{item.dateTime}</td>
-              <td>{item.dateTime}</td>
+              <td>{moment(item.dateTime).format('dddd D MMMM YYYY')}</td>
+              <td>{moment(item.dateTime).format('LT')}</td>
               <td>{item.name}</td>
               <button onClick={(e) => handleDelete(e, item.id)}>Remove</button>
             </tr>
@@ -38,7 +51,7 @@ export default function Cart() {
         })}
       </table>
 
-      <button>Submit</button>
+      <button onClick={(e)=> handleSubmit(e, order)}>Submit</button>
     </div>
   )
 }
