@@ -22,7 +22,11 @@ export default function Classes() {
   }, [])
 
   function handleInput(event) {
-    setFiltered(classes.filter((item) => item.name === event.target.value))
+    if (event.target.value === 'all') {
+      setFiltered(classes)
+    } else {
+      setFiltered(classes.filter((item) => item.name === event.target.value))
+    }
   }
 
   return (
@@ -34,7 +38,7 @@ export default function Classes() {
             <th>Time</th>
             <th>
               <select onInput={handleInput}>
-                <option>All Classes</option>
+                <option value="all">All Classes</option>
                 {classList.map((element) => {
                   return (
                     <option key={element} value={element}>
