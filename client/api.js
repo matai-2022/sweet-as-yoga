@@ -19,3 +19,7 @@ export function postOrder(order) {
       console.error(err)
     })
 }
+
+export function getAffirmation() {
+  return request.get(url + '/affirmation').then((res) => res.body.affirmation)
+}

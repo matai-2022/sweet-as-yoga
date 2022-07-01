@@ -25,9 +25,20 @@ a:hover {
 }
 
 .landing-image {
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
+  width: 100vw;
+  height: 500px;
+  background-size: auto auto;
+  background:url("/images/landing.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 64px;
+  font-family: cursive;
 }
 
 nav {
@@ -49,6 +60,7 @@ nav a {
   width: 50vw;
   line-height: 1.5rem;
   padding: 20px;
+  text-align: justify;
 }
 
 .classes {

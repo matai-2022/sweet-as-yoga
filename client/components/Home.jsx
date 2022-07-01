@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getAffirmation } from '../api'
 
 export default function Home() {
+  const [affirmation, setAffirmation] = useState('')
+
+  useEffect(async () => {
+    const temp = await getAffirmation()
+    setAffirmation(temp)
+  }, [])
+
+  console.log(affirmation)
   return (
     <div className="home">
-      <img
-        className="landing-image"
-        src="/images/landing.jpg"
-        alt="Yogi on cliff"
-      ></img>
+      <div className="landing-image">{affirmation}</div>
       <div className="home-description">
         This little oasis tucked in amongst the hustle and bustle of Newmarket
         is a place to relax, find your inner peace, get energised and feel
