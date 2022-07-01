@@ -1,22 +1,19 @@
 import React from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import Home from './Home.jsx'
 import Cart from './Cart.jsx'
 import Classes from './Classes.jsx'
 import Confirmation from './Confirmation.jsx'
+import Nav from './Nav.jsx'
 
 function App() {
+
   return (
     <>
       <div className="header">
         <h1>Sweet As Yoga</h1>
-
-        <nav>
-          <Link to="/">HOME</Link>
-          <Link to="/classes">CLASSES</Link>
-          <Link to="/cart">CART</Link>
-        </nav>
+        <Nav/>
       </div>
 
       <Routes>
