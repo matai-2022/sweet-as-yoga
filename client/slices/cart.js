@@ -1,20 +1,11 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
-// export const fetchFruits = createAsyncThunk('fruits/fetchFruits', async () => {
-//   return await getFruits()
+// import { fetchOrders, postOrder } from '../api'
+
+// export const getOrders = createAsyncThunk('orders/getOrders', async () => {
+//   const orders = await fetchOrders()
+//   return orders
 // })
-
-// const slice = createSlice({
-//   name: 'fruits',
-//   initialState: [],
-//   reducers: {},
-//   extraReducers: {
-//     [fetchFruits.fulfilled]: (state, { payload }) => payload,
-//   },
-// })
-
-// export const selectFruits = (state) => state.fruits
-// export default slice.reducer
 
 const slice = createSlice({
   name: 'cart',
