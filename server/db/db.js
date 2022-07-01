@@ -20,7 +20,11 @@ function addClass(requests, db = connection) {
     .insert({
       created_at: timestamp,
     })
-    .then(([id]) => addOrderLines(id, order, db))
+    .then(([id]) => {
+      addOrderLines(id, order, db)
+      console.log(id)
+      return id
+    })
 }
 
 function addOrderLines(id, order, db = connection) {

@@ -18,9 +18,8 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const order = req.body
   db.addClass(order)
-    .then(() => {
-      res.sendStatus(201)
-      return null
+    .then((id) => {
+      res.json({ id })
     })
     .catch((err) => {
       res.status(500).send('BACKEND ERROR: ' + err.message)
