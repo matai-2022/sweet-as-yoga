@@ -17,8 +17,11 @@ const slice = createSlice({
     deleteCart: (state, { payload }) => {
       return state.filter((item) => item.id !== payload.id)
     },
+    emptyCart: () => {
+      return []
+    },
   },
 })
 
 export default slice.reducer
-export const { addClass, deleteCart } = slice.actions
+export const { addClass, deleteCart, emptyCart } = slice.actions

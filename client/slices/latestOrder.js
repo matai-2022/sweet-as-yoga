@@ -5,7 +5,7 @@ const slice = createSlice({
   initialState: 'hello',
   reducers: {
     addLatestOrder: (state, action) => {
-      state = 'world'
+      return action.payload
     },
   },
 })

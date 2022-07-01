@@ -4,8 +4,9 @@ import {postOrder} from '../api'
 import { useSelector, useDispatch } from 'react-redux'
 
 import moment from 'moment'
-import { deleteCart } from '../slices/cart'
+import { deleteCart, emptyCart } from '../slices/cart'
 import { addLatestOrder } from '../slices/latestOrder'
+//import { addLatestOrder } from '../slices/latestOrder'
 
 export default function Cart() {
   //const [order,setOrder] = useState([])
@@ -20,15 +21,12 @@ export default function Cart() {
     dispatch(deleteCart({ id: id }))
   }
 
-  function handleSubmit(e,order){
+  async function handleSubmit(e,order){
     e.preventDefault()
-   postOrder(order)
-   .then((id)=> {
+    const id = await postOrder(order)
+    dispatch(emptyCart())
     dispatch(addLatestOrder(id))
-    navigate('/confirmation')})
-   .catch((err)=>console.error(err.message))
-
-    
+    navigate('/confirmation')
   }
 
   return (
