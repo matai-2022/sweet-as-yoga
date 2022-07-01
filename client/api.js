@@ -14,7 +14,7 @@ export function postOrder(order) {
   return request
     .post(url + '/orders')
     .send(order)
-    .then((res) => res.body)
+    .then((res) => res.body.id)
     .catch((err) => {
       console.error(err)
     })

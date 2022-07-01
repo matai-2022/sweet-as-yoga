@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import moment from 'moment'
 import { deleteCart } from '../slices/cart'
+import { addLatestOrder } from '../slices/latestOrder'
 
 export default function Cart() {
   //const [order,setOrder] = useState([])
@@ -22,7 +23,9 @@ export default function Cart() {
   function handleSubmit(e,order){
     e.preventDefault()
    postOrder(order)
-   .then(navigate('/confirmation'))
+   .then((id)=> {
+    dispatch(addLatestOrder(id))
+    navigate('/confirmation')})
    .catch((err)=>console.error(err.message))
 
     
@@ -45,7 +48,7 @@ export default function Cart() {
               <td>{moment(item.dateTime).format('dddd D MMMM YYYY')}</td>
               <td>{moment(item.dateTime).format('LT')}</td>
               <td>{item.name}</td>
-              <button onClick={(e) => handleDelete(e, item.id)}>Remove</button>
+              <td><button onClick={(e) => handleDelete(e, item.id)}>Remove</button></td>
             </tr>
           )
         })}
